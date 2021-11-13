@@ -1,7 +1,7 @@
 
 //loading JSON file using d3.json()
 d3.json("samples.json").then(function (data) {
-    console.log("Data1", data);
+    console.log(data);
 });
 
 const dataPromise = d3.json("samples.json");
