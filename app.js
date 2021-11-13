@@ -4,5 +4,10 @@ d3.json("samples.json").then(function (data) {
     console.log(data);
 });
 
-const dataPromise = d3.json("samples.json");
-console.log("Data Promise: ", dataPromise);
+//const dataPromise = d3.json("samples.json");
+//console.log("Data Promise: ", dataPromise);
+
+d3.json("samples.json", function (data) {
+    samples = data.samples;
+    console.log("Data Promise: ", samples);
+});
