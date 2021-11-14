@@ -32,12 +32,46 @@ function graphs(names) {
             initTable.append("h5").text(`${key}: ${value}`);
         });
 
+        // for bar plot and bubles plot
+        var samples = data.samples
+        //variable for each sample 
+        var singleSample = samples.filter(sample => sample.id == names)[0];
 
-    })
-};
+        // slicing 10 largest
+        var otuIds = singleSample.otu_ids.slice(0, 11);
+        var otuLabels = singleSample.otu_labels.slice(0, 11);
+        var sampleValues = singleSample.sample_values.slice(0, 11);
 
-function optionChanged(newSample) {
-    graphs(newSample);
-};
+        console.log(otuIds);
 
-init();
+        // bar plots
+        var bar = d3.select("#bar");
+        data = [{
+            x: sampleValues,
+            y: otuIds,
+            type: 'bar',
+            orientation: 'h',
+            text: otuLabels,
+            marker: {
+                color: 'rgba(55,128,191,0.6)',
+            },
+        }];
+        var layout = {
+
+            bargap: 0.3,
+            yaxis: {
+                type: 'category',
+                tickvals: otuIds,
+            }
+        }
+
+        Plotly.newPlot("bar", data, layout);
+
+
+    };
+
+    function optionChanged(newSample) {
+        graphs(newSample);
+    };
+
+    init();
