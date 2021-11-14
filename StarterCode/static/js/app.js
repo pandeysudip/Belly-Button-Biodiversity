@@ -67,11 +67,31 @@ function graphs(names) {
 
         Plotly.newPlot("bar", data, layout);
 
+        // bubles plot
+        //variable for each sample 
+        var otuIdsAll = singleSample.otu_ids;
+        var otuLabelsAll = singleSample.otu_labels;
+        var sampleValuesAll = singleSample.sample_values;
 
-    };
+        var bubble = d3.select("#bubble");
+        data = [{
+            y: sampleValuesAll,
+            x: otuIdsAll,
+            type: 'scatter',
+            mode: 'markers',
+            text: otuLabelsAll,
+            marker: {
+                size: sampleValuesAll,
+                color: otuIdsAll
+            }
+        }];
 
-    function optionChanged(newSample) {
-        graphs(newSample);
-    };
+        Plotly.newPlot("bubble", data);
+    })
+};
 
-    init();
+function optionChanged(newSample) {
+    graphs(newSample);
+};
+
+init();
