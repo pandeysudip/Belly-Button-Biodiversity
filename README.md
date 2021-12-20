@@ -48,5 +48,5 @@ The dataset reveals that a small handful of microbial species (also called opera
 The page is deployed at github:
 https://pandeysudip.github.io/web-visualization/
 
-
+![final_page](Images/final.png)
 
